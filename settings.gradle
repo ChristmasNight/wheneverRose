@@ -1,0 +1,4 @@
+rootProject.name = 'WheneverRose'
+include 'rose-api'
+include 'rose-core'
+include 'rose-web'
