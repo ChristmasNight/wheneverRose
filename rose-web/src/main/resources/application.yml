@@ -3,7 +3,7 @@ spring:
     username: root
     password: tiger
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/whenever_rose?serverTimezone=UTC&characterEncoding=UTF-8
+    url: jdbc:mysql://localhost:3306/wheneverrose?serverTimezone=UTC&characterEncoding=UTF-8
 
   jpa:
     hibernate:
