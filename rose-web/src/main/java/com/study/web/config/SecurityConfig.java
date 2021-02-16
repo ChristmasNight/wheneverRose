@@ -25,13 +25,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
   public void configure(WebSecurity web) throws Exception {
     // static 하위 파일 목록은 인증 무시
     web.ignoring().antMatchers("/css/**", "/js/**", "/img/**", "/lib/**");
+    //web.ignoring().antMatchers("/**"); => 이렇게하면 모든 페이지 인증 무시
   }
 
   @Override
   protected void configure(HttpSecurity http) throws Exception {
     http.authorizeRequests()
+    	//로그인이 필요한 url을 정의(로그인, 회원가입) => 접근 허가
         .antMatchers("/api/account/login").permitAll()
         .antMatchers("/api/account/sign-up").permitAll()
+        //.antMatchers("/api/account/sign-up").authenticated(); => 특정 페이지 접근 불가
         .anyRequest().authenticated()
         .and()
         .httpBasic();
@@ -47,7 +50,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
   @Override
   public void configure(AuthenticationManagerBuilder auth) throws Exception {
     auth.userDetailsService(accountService).passwordEncoder(passwordEncoder());
-
   }
 
   @Bean
